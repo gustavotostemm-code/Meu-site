@@ -1,0 +1,137 @@
+---
+// src/components/Education.astro
+// Add more courses to the `courses` array as your curriculum grows
+const courses = [
+  { code: "EGN 3211", name: "Introduction to C", desc: "Fundamentals of C programming — memory, pointers, functions, and structured problem-solving." },
+  // ← Add more courses here as you complete them
+  // { code: "COP XXXX", name: "Course Name", desc: "Short description." },
+];
+---
+
+<section id="education">
+  <div class="container">
+    <p class="section-label">02 — Education</p>
+    <h2 class="section-title">Where I study</h2>
+    <div class="section-rule"></div>
+
+    <div class="edu-card card">
+      <div class="edu-header">
+        <div class="edu-icon" aria-hidden="true">🎓</div>
+        <div>
+          <h3 class="edu-school">University of Central Florida</h3>
+          <p class="edu-degree">B.S. Computer Engineering</p>
+        </div>
+        <div class="edu-dates">
+          <span class="tag">Fall 2025 — 2029</span>
+        </div>
+      </div>
+
+      <div class="edu-divider"></div>
+
+      <!-- Relevant coursework -->
+      <div class="edu-courses">
+        <p class="edu-courses-label">Relevant Coursework</p>
+        <div class="courses-grid">
+          {courses.map(c => (
+            <div class="course-item">
+              <span class="course-code">{c.code}</span>
+              <span class="course-name">{c.name}</span>
+              <p class="course-desc">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .edu-card {
+    max-width: 780px;
+  }
+
+  .edu-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .edu-icon {
+    font-size: 2rem;
+    line-height: 1;
+    margin-top: 0.1rem;
+  }
+  .edu-school {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  .edu-degree {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+  .edu-dates {
+    margin-left: auto;
+    padding-top: 0.1rem;
+  }
+
+  .edu-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 1.5rem 0;
+  }
+
+  .edu-courses-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .courses-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .course-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 1rem;
+  }
+  .course-code {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    grid-row: 1;
+    align-self: center;
+  }
+  .course-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .course-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    grid-column: 2;
+    grid-row: 2;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .edu-header { flex-direction: column; }
+    .edu-dates  { margin-left: 0; }
+    .course-item { grid-template-columns: 1fr; }
+    .course-code { grid-row: auto; }
+    .course-name, .course-desc { grid-column: 1; }
+  }
+</style>

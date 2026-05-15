@@ -1,0 +1,203 @@
+---
+// src/components/Projects.astro
+//
+// ── HOW TO ADD / EDIT PROJECTS ──
+// Each project is an object in the `projects` array below.
+// Fields:
+//   title:    Project name
+//   desc:     Short description (2-3 sentences)
+//   learned:  What you learned or what problem it solves
+//   tech:     Array of technology tags
+//   github:   GitHub URL (or "#" if not public yet)
+//   demo:     Live demo URL (or null to hide the button)
+//   featured: Set to true for the first/main project (larger card)
+
+const projects = [
+  {
+    title: "Personal Portfolio Website",
+    desc: "The very site you're looking at. A minimalist, dark-mode portfolio built with Astro to showcase my projects, skills, and experience as a Computer Engineering student.",
+    learned: "Learned component-driven architecture with Astro, CSS custom properties for theming, and how to build a fully responsive layout without heavy frameworks.",
+    tech: ["Astro", "HTML", "CSS", "JavaScript"],
+    github: "https://github.com/yourusername/portfolio",
+    demo: "#", // replace with your deployed URL
+    featured: true,
+  },
+  {
+    title: "C Systems Programming — EGN 3211",
+    desc: "A collection of programs from Introduction to C coursework — covering memory management, pointer arithmetic, file I/O, and data structures in C.",
+    learned: "Developed a solid understanding of low-level programming concepts: how memory is allocated, how pointers work, and how to write efficient, structured code in C.",
+    tech: ["C", "GCC", "Linux"],
+    github: "https://github.com/yourusername/c-projects",
+    demo: null,
+    featured: false,
+  },
+  {
+    title: "Python File Organizer",
+    desc: "A command-line automation script that scans a directory and sorts files into categorized folders based on extension — documents, images, code, media, etc.",
+    learned: "Practiced Python scripting, file system manipulation with the os and shutil modules, and writing reusable CLI tools that solve a real, everyday problem.",
+    tech: ["Python", "CLI", "os/shutil"],
+    github: "https://github.com/yourusername/file-organizer",
+    demo: null,
+    featured: false,
+  },
+  {
+    title: "Responsive Landing Page",
+    desc: "A fully responsive HTML/CSS landing page built from scratch, no frameworks — featuring a mobile-first layout, custom CSS Grid, and smooth scroll interactions.",
+    learned: "Deepened my understanding of CSS Grid, Flexbox, responsive design patterns, and how to craft clean, accessible layouts without relying on utility libraries.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/yourusername/landing-page",
+    demo: "#", // replace with deployed URL
+    featured: false,
+  },
+];
+---
+
+<section id="projects">
+  <div class="container">
+    <p class="section-label">03 — Projects</p>
+    <h2 class="section-title">Things I've built</h2>
+    <p class="section-sub">
+      Projects I've worked on — from coursework to personal tools.
+      Each one taught me something new.
+    </p>
+    <div class="section-rule"></div>
+
+    <div class="projects-grid">
+      {projects.map((p, i) => (
+        <article class={`card project-card ${p.featured ? 'project-featured' : ''}`}>
+
+          <!-- Top row: number + links -->
+          <div class="project-top">
+            <span class="project-num">{String(i + 1).padStart(2, '0')}</span>
+            <div class="project-links">
+              {p.github && p.github !== '#' && (
+                <a href={p.github} target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23A11.52 11.52 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.298 24 12c0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+              )}
+              {p.demo && p.demo !== '#' && (
+                <a href={p.demo} target="_blank" rel="noopener" class="icon-link" aria-label="Live demo">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+
+          <!-- Title -->
+          <h3 class="project-title">{p.title}</h3>
+
+          <!-- Description -->
+          <p class="project-desc">{p.desc}</p>
+
+          <!-- What I learned -->
+          <div class="project-learned">
+            <span class="learned-label">↳ what I learned</span>
+            <p>{p.learned}</p>
+          </div>
+
+          <!-- Tech tags -->
+          <div class="project-tech">
+            {p.tech.map(t => <span class="tag">{t}</span>)}
+          </div>
+
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-featured {
+    grid-column: span 2;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+  }
+
+  /* Top row */
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .project-num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .icon-link {
+    color: var(--text-muted);
+    transition: color var(--transition);
+    display: flex;
+  }
+  .icon-link:hover { color: var(--accent); }
+
+  /* Content */
+  .project-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.25;
+  }
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  /* Learned */
+  .project-learned {
+    background: var(--accent-dim);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .learned-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+  .project-learned p {
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Tech tags */
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+  }
+
+  @media (max-width: 768px) {
+    .project-featured { grid-column: span 1; }
+    .projects-grid    { grid-template-columns: 1fr; }
+  }
+</style>

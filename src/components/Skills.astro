@@ -1,0 +1,119 @@
+---
+// src/components/Skills.astro
+// Add or remove skills by editing the `skillGroups` array below
+
+const skillGroups = [
+  {
+    label: "Languages",
+    icon: "{ }",
+    skills: ["C", "Python", "HTML", "CSS", "JavaScript"],
+  },
+  {
+    label: "Tools & Frameworks",
+    icon: "⚙",
+    skills: ["Astro", "Git", "GitHub", "VS Code", "Linux CLI"],
+  },
+  {
+    label: "Concepts",
+    icon: "◈",
+    skills: ["Responsive Design", "Component Architecture", "Version Control", "Problem Solving", "CLI Tools"],
+  },
+  {
+    label: "Human Languages",
+    icon: "◎",
+    skills: ["English (fluent)", "Portuguese (fluent)"],
+  },
+];
+---
+
+<section id="skills">
+  <div class="container">
+    <p class="section-label">04 — Skills</p>
+    <h2 class="section-title">What I work with</h2>
+    <p class="section-sub">
+      A growing toolkit. Still early, but building fast.
+    </p>
+    <div class="section-rule"></div>
+
+    <div class="skills-grid">
+      {skillGroups.map(group => (
+        <div class="skill-group card">
+          <div class="skill-group-header">
+            <span class="skill-group-icon">{group.icon}</span>
+            <span class="skill-group-label">{group.label}</span>
+          </div>
+          <div class="skill-pills">
+            {group.skills.map(skill => (
+              <span class="skill-pill">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .skill-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-group-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .skill-group-icon {
+    font-size: 1rem;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    width: 1.5rem;
+    text-align: center;
+  }
+  .skill-group-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .skill-pill {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: border-color var(--transition), color var(--transition), background var(--transition);
+  }
+  .skill-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  @media (max-width: 500px) {
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 380px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+</style>

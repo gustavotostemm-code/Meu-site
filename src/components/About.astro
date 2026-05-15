@@ -1,0 +1,141 @@
+---
+// src/components/About.astro
+// Edit the text below to personalize your bio
+---
+
+<section id="about">
+  <div class="container">
+    <p class="section-label">01 — About</p>
+    <h2 class="section-title">A bit about me</h2>
+    <div class="section-rule"></div>
+
+    <div class="about-grid">
+
+      <!-- Text column -->
+      <div class="about-text">
+        <p>
+          I'm a Computer Engineering student at the <strong>University of Central Florida</strong>,
+          where I started in Fall 2025 and plan to graduate around 2029.
+          I chose Computer Engineering because I wanted to understand how software and hardware
+          work together — and because I genuinely enjoy building things.
+        </p>
+        <p>
+          My focus right now is on <em>web development</em> and <em>software development</em>.
+          I like taking ideas and turning them into real, functional projects — whether that's
+          a clean front-end interface, a small tool that automates something tedious,
+          or a C program that actually compiles on the first try.
+        </p>
+        <p>
+          I'm actively looking for internships where I can contribute, learn from experienced
+          engineers, and keep growing. I don't have years of professional experience yet —
+          but I'm curious, fast to learn, and motivated to do good work.
+        </p>
+        <p class="about-lang">
+          I'm fluent in both <span class="lang">English</span> and <span class="lang">Portuguese</span>.
+        </p>
+      </div>
+
+      <!-- Stats / facts column -->
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-value">UCF</span>
+          <span class="stat-label">University of Central Florida</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">B.S.</span>
+          <span class="stat-label">Computer Engineering</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">'25 → '29</span>
+          <span class="stat-label">Fall 2025 · Expected Graduation</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value accent">Open</span>
+          <span class="stat-label">Seeking internships</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .about-text p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  .about-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .about-text em {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .about-lang {
+    font-family: var(--font-mono);
+    font-size: 0.85rem !important;
+    color: var(--text-muted) !important;
+  }
+  .lang {
+    color: var(--accent);
+  }
+
+  /* Stats */
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transition: border-color var(--transition);
+  }
+  .stat-card:hover {
+    border-color: var(--border-light);
+  }
+  .stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    font-family: var(--font-display);
+  }
+  .stat-value.accent {
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+  @media (max-width: 500px) {
+    .about-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>

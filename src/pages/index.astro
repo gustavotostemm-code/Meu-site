@@ -1,0 +1,194 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Education from "../components/Education.astro";
+import Projects from "../components/Projects.astro";
+import Skills from "../components/Skills.astro";
+---
+
+<Layout>
+  <Hero />
+  <About />
+  <Education />
+  <Projects />
+  <Skills />
+
+  <!-- Experience section: keep this here or move it later to src/components/Experience.astro -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">05 - Experience</p>
+      <h2 class="section-title">Work experience</h2>
+      <p class="section-sub">
+        Experience that helped me build responsibility, communication, organization,
+        and technical adaptability.
+      </p>
+      <div class="section-rule"></div>
+
+      <article class="card experience-card">
+        <div class="experience-header">
+          <div>
+            <h3>Marketing / Operations Assistant</h3>
+            <p>Arena Oriente</p>
+          </div>
+          <span class="tag">Operations + Digital Media</span>
+        </div>
+
+        <ul class="experience-list">
+          <li>Managed Instagram/social media content and supported the arena's digital presence.</li>
+          <li>Created and configured live video streams for events at the arena.</li>
+          <li>Built and maintained spreadsheets for cash control and operational organization.</li>
+          <li>Used digital tools to solve practical workflow problems and support day-to-day operations.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Resume section -->
+  <section id="resume" class="resume-section">
+    <div class="container resume-card card">
+      <div>
+        <p class="section-label">06 - Resume</p>
+        <h2 class="section-title">Resume</h2>
+        <p class="section-sub resume-copy">
+          A quick overview of my education, projects, skills, and work experience.
+          Replace the placeholder PDF later when your final resume is ready.
+        </p>
+      </div>
+
+      <a href="/resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+        Open Resume
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact section -->
+  <section id="contact">
+    <div class="container contact-wrap">
+      <p class="section-label">07 - Contact</p>
+      <h2 class="section-title">Let's connect</h2>
+      <p class="section-sub">
+        I am currently looking for internship opportunities and would be happy to connect.
+      </p>
+      <div class="section-rule"></div>
+
+      <div class="contact-grid">
+        <a class="card contact-card" href="mailto:your.email@example.com">
+          <span class="contact-label">Email</span>
+          <strong>your.email@example.com</strong>
+        </a>
+
+        <a class="card contact-card" href="https://github.com/yourusername" target="_blank" rel="noopener">
+          <span class="contact-label">GitHub</span>
+          <strong>github.com/yourusername</strong>
+        </a>
+
+        <a class="card contact-card" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">
+          <span class="contact-label">LinkedIn</span>
+          <strong>linkedin.com/in/yourprofile</strong>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .experience-card {
+    max-width: 820px;
+  }
+
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .experience-header h3 {
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .experience-header p {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+
+  .experience-list {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .experience-list li {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .experience-list li::before {
+    content: "->";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .resume-section {
+    padding-top: 0;
+  }
+
+  .resume-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .resume-copy {
+    margin-bottom: 0;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .contact-label {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .contact-card strong {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
+
+  @media (max-width: 768px) {
+    .experience-header,
+    .resume-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
